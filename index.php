@@ -11,3 +11,7 @@
 
     </body>
 </html>
+
+<script>
+    <?php require 'resources/scripts/codle.js' ?>
+</script>

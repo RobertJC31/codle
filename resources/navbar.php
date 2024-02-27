@@ -26,7 +26,8 @@
     logo {
         color: white;
         font-family: JetBrains, serif;
-        font-size: 44px;
-        letter-spacing: 4px;
+        font-size: 38px;
+        letter-spacing: 3px;
+        font-weight: 900;
     }
 </style>

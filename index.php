@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-    <header>
-        <h1> Codle </h1>
-    </header>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Codle</title>
+</head>
+
+<html lang="en-US">
+
 </html>

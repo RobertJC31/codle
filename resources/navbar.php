@@ -6,5 +6,27 @@
 </head>
 
 <html lang="en-US">
-
+    <nav class="no-highlight">
+        <logo>CODLE</logo>
+    </nav>
 </html>
+
+<style>
+    <?php require 'bourbon&soda.css' ?>
+    nav {
+        height: 64px;
+        width: 100%;
+        background-color: var(--background-color);
+        border-bottom: 1px solid gray;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    logo {
+        color: white;
+        font-family: JetBrains, serif;
+        font-size: 44px;
+        letter-spacing: 4px;
+    }
+</style>

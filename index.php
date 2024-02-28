@@ -20,26 +20,5 @@
 
 <script>
     <?php require 'resources/scripts/codle.js' ?>
-    var popUp = document.getElementById("pop-up");
-    var popUpClose = document.getElementById("pop-up-close");
-    window.onload = function() 
-    {
-        popUp.style.display = "block";
-    };
-
-    window.onclick = function(event) 
-    {
-        if (event.target == popUp) 
-        {
-            popUp.style.display = "none";
-        }
-    };
-
-    window.onclick = function(event) 
-    {
-        if (event.target == popUpClose) 
-        {
-            popUp.style.display = "none";
-        }
-    };
+    <?php require 'resources/scripts/popup.js' ?>
 </script>

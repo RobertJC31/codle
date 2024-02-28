@@ -10,7 +10,7 @@
     <body>
         <div id="pop-up" class="pop-up">
             <div class="pop-up-content">
-            <span id="pop-up-close" class="close">&times;</span>
+            <span id="pop-up-close" class="pop-up-close">&times;</span>
             <p>Welcome to Codle!</p>
             <p>To play Codle you have to guess the 4 digit code in 5 guesses.</p>
         </div>
@@ -20,26 +20,5 @@
 
 <script>
     <?php require 'resources/scripts/codle.js' ?>
-    var popUp = document.getElementById("pop-up");
-    var popUpClose = document.getElementById("pop-up-close");
-    window.onload = function() 
-    {
-        popUp.style.display = "block";
-    };
-
-    window.onclick = function(event) 
-    {
-        if (event.target == popUp) 
-        {
-            popUp.style.display = "none";
-        }
-    };
-
-    window.onclick = function(event) 
-    {
-        if (event.target == popUpClose) 
-        {
-            popUp.style.display = "none";
-        }
-    };
+   /* <?php require 'resources/scripts/popup.js' ?> */
 </script>

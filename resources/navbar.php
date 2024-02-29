@@ -13,12 +13,16 @@
         <logo>CODLE</logo>
         <ul>
             <li><i class="fa-solid fa-chart-simple"></i></li>
-            <li id="nav-popup-settings-open"><i id="nav-popup-settings-open-cog" class="settings-cog fa-solid fa-gear"></i></li>
+            <li id="nav-popup-settings-open"><i class="settings-cog fa-solid fa-gear"></i></li>
         </ul>
     </nav>
     <div id="nav-popup" class="nav-popup no-highlight">
         <div class="nav-popup-modal">
-            <span class="nav-modal-title">GAME SETTINGS</span>
+            <div class="nav-popup-modal-top">
+                <div class="nav-popup-modal-top-spacer"></div>
+                <span class="nav-modal-title">GAME SETTINGS</span>
+                <span id="nav-modal-settings-close" class="nav-modal-close"><i class="fa-solid fa-xmark"></i></span>
+            </div>
             <div class="nav-modal-setting">
                 <div class="nav-modal-setting-text">
                     <span class="nav-modal-setting-title left-float">Hard Mode</span>
@@ -141,11 +145,11 @@
         transition: cubic-bezier(0.4, 0, 0.6, 1) .25s;
     }
 
-    nav :where(ul) li:hover > i {
+    nav :where(ul) li:hover > i, .nav-settings-cog-selected {
         color: white;
     }
 
-    nav :where(ul) li:hover .settings-cog {
+    nav :where(ul) li:hover .settings-cog, .nav-settings-cog-selected {
         transform: rotate(-90deg);
         transition: .25s;
     }
@@ -164,12 +168,11 @@
         justify-content: center;
         align-items: center;
         background-color: rgba(0, 0, 0, 0.5);
-
     }
 
     .nav-popup-modal {
-        margin-top: -65px;
-        width: 510px;
+        margin-top: -25px;
+        width: var(--popup-width);
         max-width: 525px;
         max-height: 625px;
         background-color: var(--background-color);
@@ -180,13 +183,44 @@
         box-shadow: 0 4px 23px 0 rgba(0, 0, 0, .2);
     }
 
+    .nav-popup-modal-top {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
     .nav-modal-title {
-             font-family: JetBrains, serif;
-             text-transform: uppercase;
-             font-size: 15px;
-             color: white;
-             text-align: center;
-             margin-bottom: 10px;
+        font-family: JetBrains, serif;
+        text-transform: uppercase;
+        font-size: 15px;
+        color: white;
+        margin: auto;
+    }
+
+    .nav-modal-close {
+        font-family: JetBrains, serif;
+        text-transform: uppercase;
+        font-size: 25px;
+        color: gray;
+        text-align: right;
+        margin-left: -15px;
+        padding: 10px;
+        cursor: pointer;
+        transition: cubic-bezier(0.4, 0, 0.6, 1) .25s;
+    }
+
+    .nav-modal-close:hover {
+        color: white;
+    }
+
+    .nav-popup-modal-top-spacer {
+        width: 24px;
+        height: 100%;
+    }
+
+    .red {
+        color: red;
+        background-color: blue;
     }
 
     .nav-modal-setting {
@@ -314,7 +348,7 @@
 <script src="https://kit.fontawesome.com/dba819a3b6.js" crossorigin="anonymous"></script>
 <script src="/resources/scripts/popup.js"></script>
 <script>
-    addListenerToTriggerDisplay("nav-popup-settings-open", "nav-popup", "flex");
-    addListenerToTriggerDisplay("nav-popup-settings-open-cog", "nav-popup", "flex");
-    addListenerToTriggerDisplay("nav-popup", "nav-popup", "none");
+    addListenerToTriggerDisplay("nav-popup-settings-open", "nav-popup", "flex", true);
+    addListenerToTriggerDisplay("nav-popup", "nav-popup", "none", false);
+    addListenerToTriggerDisplay("nav-modal-settings-close", "nav-popup", "none", true);
 </script>

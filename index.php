@@ -26,6 +26,6 @@
         document.getElementById("pop-up").style.display = "block";
     }
 
-    addListenerToTriggerDisplay("pop-up", "pop-up", "none");
-    addListenerToTriggerDisplay("pop-up-close", "pop-up", "none");
+    addListenerToTriggerDisplay("pop-up", "pop-up", "none", false);
+    addListenerToTriggerDisplay("pop-up-close", "pop-up", "none", true);
 </script>

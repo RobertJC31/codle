@@ -145,11 +145,11 @@
         transition: cubic-bezier(0.4, 0, 0.6, 1) .25s;
     }
 
-    nav :where(ul) li:hover > i, .nav-settings-cog-selected {
+    nav :where(ul) li:hover > i {
         color: white;
     }
 
-    nav :where(ul) li:hover .settings-cog, .nav-settings-cog-selected {
+    nav :where(ul) li:hover .settings-cog {
         transform: rotate(-90deg);
         transition: .25s;
     }
@@ -216,11 +216,6 @@
     .nav-popup-modal-top-spacer {
         width: 24px;
         height: 100%;
-    }
-
-    .red {
-        color: red;
-        background-color: blue;
     }
 
     .nav-modal-setting {
@@ -335,6 +330,11 @@
         color: #F8F8F8;
     }
 
+    .nav-settings-cog-active > i {
+        color: white;
+        transform: rotate(-90deg);
+    }
+
     .left-float {
         float: left;
     }
@@ -348,7 +348,7 @@
 <script src="https://kit.fontawesome.com/dba819a3b6.js" crossorigin="anonymous"></script>
 <script src="/resources/scripts/popup.js"></script>
 <script>
-    addListenerToTriggerDisplay("nav-popup-settings-open", "nav-popup", "flex", true);
-    addListenerToTriggerDisplay("nav-popup", "nav-popup", "none", false);
-    addListenerToTriggerDisplay("nav-modal-settings-close", "nav-popup", "none", true);
+    triggerDisplayAndTrigger("nav-popup-settings-open", "nav-popup", "flex", true, "nav-settings-cog-active", "nav-popup-settings-open");
+    triggerDisplayAndTrigger("nav-popup", "nav-popup", "none", false, "nav-settings-cog-active", "nav-popup-settings-open");
+    triggerDisplayAndTrigger("nav-modal-settings-close", "nav-popup", "none", true, "nav-settings-cog-active", "nav-popup-settings-open");
 </script>

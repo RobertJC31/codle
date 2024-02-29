@@ -91,7 +91,7 @@
             </div>
             <div class="nav-modal-copyright">
                 <span class="nav-modal-copyright-info left-float">© <?php echo date("Y"); ?> Robert Ceriani & Bowen Carnell</span>
-                <span class="nav-modal-copyright-game right-float">#Penis-Fucker</span>
+                <span class="nav-modal-copyright-game right-float"></span>
             </div>
         </div>
     </div>

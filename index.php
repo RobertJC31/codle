@@ -18,7 +18,14 @@
     </body>
 </html>
 
+<script src="/resources/scripts/popup.js"></script>
 <script>
     <?php require 'resources/scripts/codle.js' ?>
-   /* <?php require 'resources/scripts/popup.js' ?> */
+
+    window.onload = function() {
+        document.getElementById("pop-up").style.display = "block";
+    }
+
+    addListenerToTriggerDisplay("pop-up", "pop-up", "none");
+    addListenerToTriggerDisplay("pop-up-close", "pop-up", "none");
 </script>

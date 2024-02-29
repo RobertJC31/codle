@@ -1,15 +1,12 @@
-var popUp = document.getElementById("pop-up");
-var popUpClose = document.getElementById("pop-up-close");
+function addListenerToTriggerDisplay(triggerElementID, targetElementID, style) {
+    const triggerElement = document.getElementById(triggerElementID);
+    const targetElement = document.getElementById(targetElementID);
 
-window.onload = function()
-{
-    popUp.style.display = "block";
-};
-
-window.onclick = function(event)
-{
-    if (event.target === popUp || event.target === popUpClose)
-    {
-        popUp.style.display = "none";
+    if (triggerElement && targetElement) {
+        triggerElement.addEventListener('click', function() {
+            targetElement.style.display = style;
+        })
+    } else {
+        console.error("One of the specified elements not found.");
     }
-};
+}

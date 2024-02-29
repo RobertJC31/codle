@@ -1,6 +1,7 @@
 :root {
     --background-color: rgb(12, 12, 13);
     --color-tone-border: rgb(58, 58, 60);
+    --popup-width: 510px;
 }
 
 * {
@@ -20,4 +21,9 @@
 @font-face {
     font-family: "JetBrains";
     src: url("/resources/fonts/JetBrains.woff2") format('woff2');
+}
+
+@font-face {
+    font-family: "Clear Sans";
+    src: url("/resources/fonts/ClearSans.woff") format('woff');
 }

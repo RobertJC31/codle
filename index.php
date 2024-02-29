@@ -12,7 +12,7 @@
             <div class="pop-up-content">
             <span id="pop-up-close" class="pop-up-close">&times;</span>
             <p>Welcome to Codle!</p>
-            <p>To play Codle you have to guess the 4 digit code in 5 guesses.</p>
+            <p>To play Codle you have to guess the 4-digit code in 5 guesses.</p>
         </div>
         </div>
     </body>

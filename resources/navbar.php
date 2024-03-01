@@ -30,7 +30,7 @@
                 </div>
                 <div class="nav-modal-switch-container right-float">
                     <label class="nav-modal-switch right-float">
-                        <input type="checkbox">
+                        <input id="game-setting-hard-mode" type="checkbox">
                         <span class="nav-modal-switch-slider round"></span>
                     </label>
                 </div>
@@ -42,7 +42,7 @@
                 </div>
                 <div class="nav-modal-switch-container right-float">
                     <label class="nav-modal-switch right-float">
-                        <input type="checkbox">
+                        <input id="game-setting-allow-alpha" type="checkbox">
                         <span class="nav-modal-switch-slider round"></span>
                     </label>
                 </div>
@@ -53,7 +53,7 @@
                 </div>
                 <div class="nav-modal-switch-container right-float">
                     <label class="nav-modal-switch right-float">
-                        <input type="checkbox">
+                        <input id="game-setting-allow-5-digits" type="checkbox">
                         <span class="nav-modal-switch-slider round"></span>
                     </label>
                 </div>
@@ -64,7 +64,7 @@
                 </div>
                 <div class="nav-modal-switch-container right-float">
                     <label class="nav-modal-switch right-float">
-                        <input type="checkbox">
+                        <input id="game-setting-dark-theme" type="checkbox">
                         <span class="nav-modal-switch-slider round"></span>
                     </label>
                 </div>
@@ -76,7 +76,7 @@
                 </div>
                 <div class="nav-modal-switch-container right-float">
                     <label class="nav-modal-switch right-float">
-                        <input type="checkbox">
+                        <input id="game-setting-allow-on-screen-keyboard-only" type="checkbox">
                         <span class="nav-modal-switch-slider round"></span>
                     </label>
                 </div>
@@ -347,7 +347,76 @@
 <script src="https://kit.fontawesome.com/dba819a3b6.js" crossorigin="anonymous"></script>
 <script src="/resources/scripts/popup.js"></script>
 <script>
+    <?php require 'resources/scripts/cookie.js' ?>
+    let hardModeToggle = document.getElementById("game-setting-hard-mode");
+    let allowAlphasToggle = document.getElementById("game-setting-allow-alpha");
+    let allow5DigitsToggle = document.getElementById("game-setting-allow-5-digits");
+    let darkThemeToggle = document.getElementById("game-setting-dark-theme");
+    let onScreenKeyboardOnlyToggle = document.getElementById("game-setting-allow-on-screen-keyboard-only");
+    let userSettings;
+
     triggerDisplayAndTrigger("nav-popup-settings-open", "nav-popup", "flex", true, "nav-settings-cog-active", "nav-popup-settings-open");
     triggerDisplayAndTrigger("nav-popup", "nav-popup", "none", false, "nav-settings-cog-active", "nav-popup-settings-open");
     triggerDisplayAndTrigger("nav-modal-settings-close", "nav-popup", "none", true, "nav-settings-cog-active", "nav-popup-settings-open");
+    hardModeToggle.addEventListener('change', updateUserSettings);
+    allowAlphasToggle.addEventListener('change', updateUserSettings);
+    allow5DigitsToggle.addEventListener('change', updateUserSettings);
+    darkThemeToggle.addEventListener('change', updateUserSettings);
+    onScreenKeyboardOnlyToggle.addEventListener('change', updateUserSettings);
+
+
+    getUserSettings();
+
+    function getUserSettings() {
+        if (!(checkCookie("userSettings"))) {
+            let defaultSettings = JSON.stringify({
+                hardMode: false,
+                allowAlphas: false,
+                allow5Digits: false,
+                darkTheme: true,
+                onScreenKeyboardOnly: false
+            })
+            setCookie("userSettings", defaultSettings, 365);
+            userSettings = JSON.parse(defaultSettings);
+        } else {
+            userSettings = JSON.parse(getCookie("userSettings"));
+        }
+
+        // Hard Mode Setting
+        hardModeToggle.checked = userSettings.hardMode === true;
+
+        // Allow Alpha Characters Setting
+        allowAlphasToggle.checked = userSettings.allowAlphas === true;
+
+        // Allow 5 Digits Setting
+        allow5DigitsToggle.checked = userSettings.allow5Digits === true;
+
+        // Dark Theme Setting
+        darkThemeToggle.checked = userSettings.darkTheme === true;
+
+        // Onscreen Keyboard Only Setting
+        onScreenKeyboardOnlyToggle.checked = userSettings.onScreenKeyboardOnly === true;
+    }
+
+    function updateUserSettings(event) {
+        console.log("updating")
+        if (event.target === hardModeToggle) {
+            userSettings.hardMode = !!event.target.checked;
+        }
+        if (event.target === allowAlphasToggle) {
+            userSettings.allowAlphas = !!event.target.checked;
+        }
+        if (event.target === allow5DigitsToggle) {
+            userSettings.allow5Digits = !!event.target.checked;
+        }
+        if (event.target === darkThemeToggle) {
+            userSettings.darkTheme = !!event.target.checked;
+        }
+        if (event.target === onScreenKeyboardOnlyToggle) {
+            userSettings.onScreenKeyboardOnly = !!event.target.checked;
+        }
+        console.log(userSettings);
+        setCookie("userSettings", JSON.stringify(userSettings), 365);
+    }
+
 </script>

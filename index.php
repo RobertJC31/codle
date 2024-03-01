@@ -67,9 +67,16 @@
 <script src="/resources/scripts/popup.js"></script>
 <script>
     <?php require 'resources/scripts/codegenerator.js' ?>
+    <?php require 'resources/scripts/cookie.js' ?>
+    let code;
 
     window.onload = function() {
         document.getElementById("pop-up").style.display = "block";
+        generateNewCode();
+    }
+
+    function generateNewCode() {
+        code = generateCode(userSettings.allowAlphas, userSettings.allow5Digits);
     }
 
     triggerDisplay("pop-up", "pop-up", "none", false);

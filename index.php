@@ -8,18 +8,28 @@
 
 <html lang="en-US">
     <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; 
+        }
         .board {
             display: grid;
-            grid-template-columns: repeat(10, 30px);
-            grid-template-rows: repeat(1, 30px);
+            grid-template-columns: repeat(10, 100px);
+            grid-template-rows: repeat(1, 100px);
             gap: 1px;
             border: 1px solid #000;
         }
-
+        .board-container {
+            flex-grow: 1; 
+            display: flex;
+            justify-content: center;
+            align-items: flex-end; 
+        }
         .peg {
-            width: 30px; 
-            height: 30px; 
-            background-color: #ccc; 
+            width: 100px; 
+            height: 100px; 
+            background-color: white; 
         }
     </style>
     <body>
@@ -30,8 +40,19 @@
             <p>To play Codle you have to guess the 4-digit code in 5 guesses.</p>
         </div>
         </div>
+        <div class="board-container">
         <div class="board">
-
+        <div class="peg"></div>
+    <div class="peg"></div>
+    <div class="peg"></div>
+    <div class="peg"></div>
+    <div class="peg"></div>
+    <div class="peg"></div>
+    <div class="peg"></div>
+    <div class="peg"></div>
+    <div class="peg"></div>
+    <div class="peg"></div>
+    </div>
     </div>
     </body>
 </html>

@@ -15,9 +15,9 @@
         }
         .board {
             display: grid;
-            grid-template-columns: repeat(10, 100px);
-            grid-template-rows: repeat(1, 100px);
-            gap: 1px;
+            grid-template-columns: repeat(5, 70px);
+            grid-template-rows: repeat(2, 70px);
+            gap: 5px;
             border: 1px solid #000;
         }
         .board-container {
@@ -27,9 +27,16 @@
             align-items: flex-end; 
         }
         .peg {
-            width: 100px; 
-            height: 100px; 
-            background-color: white; 
+            width: 70px; 
+            height: 70px; 
+            background-color: grey; 
+            border-radius: 20%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
         }
     </style>
     <body>
@@ -42,16 +49,16 @@
         </div>
         <div class="board-container">
         <div class="board">
-        <div class="peg"></div>
-    <div class="peg"></div>
-    <div class="peg"></div>
-    <div class="peg"></div>
-    <div class="peg"></div>
-    <div class="peg"></div>
-    <div class="peg"></div>
-    <div class="peg"></div>
-    <div class="peg"></div>
-    <div class="peg"></div>
+        <div class="peg">0</div>
+    <div class="peg">1</div>
+    <div class="peg">2</div>
+    <div class="peg">3</div>
+    <div class="peg">4</div>
+    <div class="peg">5</div>
+    <div class="peg">6</div>
+    <div class="peg">7</div>
+    <div class="peg">8</div>
+    <div class="peg">9</div>
     </div>
     </div>
     </body>

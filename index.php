@@ -27,7 +27,7 @@
             <div class="pop-up-content">
             <span id="pop-up-close" class="pop-up-close">&times;</span>
             <p>Welcome to Codle!</p>
-            <p>To play Codle you have to guess the 4 digit code in 5 guesses.</p>
+            <p>To play Codle you have to guess the 4-digit code in 5 guesses.</p>
         </div>
         </div>
         <div class="board">
@@ -44,6 +44,6 @@
         document.getElementById("pop-up").style.display = "block";
     }
 
-    addListenerToTriggerDisplay("pop-up", "pop-up", "none");
-    addListenerToTriggerDisplay("pop-up-close", "pop-up", "none");
+    triggerDisplay("pop-up", "pop-up", "none", false);
+    triggerDisplay("pop-up-close", "pop-up", "none", true);
 </script>

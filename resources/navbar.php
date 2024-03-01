@@ -95,7 +95,7 @@
             </div>
             <div class="nav-modal-copyright">
                 <span class="nav-modal-copyright-info left-float">© <?php echo date("Y"); ?> Robert Ceriani & Bowen Carnell</span>
-                <span class="nav-modal-copyright-game right-float"></span>
+                <span class="nav-modal-copyright-game right-float">#Penis-Fucker</span>
             </div>
         </div>
     </div>
@@ -125,7 +125,6 @@
         font-size: 38px;
         letter-spacing: 3px;
         font-weight: 900;
-        padding-left: 3px;
     }
 
     nav: where(ul) ul {
@@ -167,7 +166,7 @@
         left: 0;
         justify-content: center;
         align-items: center;
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: var(--popup-background);
     }
 
     .nav-popup-modal {

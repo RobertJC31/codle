@@ -2,6 +2,7 @@
     --background-color: rgb(12, 12, 13);
     --color-tone-border: rgb(58, 58, 60);
     --popup-width: 510px;
+    --popup-background: rgba(0, 0, 0, 0.75);
 }
 
 * {

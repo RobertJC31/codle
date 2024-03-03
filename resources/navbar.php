@@ -12,11 +12,11 @@
         </ul>
         <logo>CODLE</logo>
         <ul>
-            <li><i class="fa-solid fa-chart-simple"></i></li>
+            <li id="nav-popup-stats-open"><i class="fa-solid fa-chart-simple"></i></li>
             <li id="nav-popup-settings-open"><i class="settings-cog fa-solid fa-gear"></i></li>
         </ul>
     </nav>
-    <div id="nav-popup" class="nav-popup no-highlight">
+    <div id="nav-settings-popup" class="nav-popup no-highlight">
         <div class="nav-popup-modal">
             <div class="nav-popup-modal-top">
                 <div class="nav-popup-modal-top-spacer"></div>
@@ -96,6 +96,56 @@
             <div class="nav-modal-copyright">
                 <span class="nav-modal-copyright-info left-float">© <?php echo date("Y"); ?> Robert Ceriani & Bowen Carnell</span>
                 <span class="nav-modal-copyright-game right-float">#Penis-Fucker</span>
+            </div>
+        </div>
+    </div>
+    <div id="nav-stats-popup" class="nav-popup no-highlight">
+        <div class="nav-popup-modal">
+            <div class="nav-popup-modal-top">
+                <div class="nav-popup-modal-top-spacer"></div>
+                <span class="nav-modal-title">STATISTICS</span>
+                <span id="nav-modal-stats-close" class="nav-modal-close"><i class="fa-solid fa-xmark"></i></span>
+            </div>
+            <div class="nav-modal-stats-summary">
+                <div class="nav-modal-stats-summary-container">
+                    <span id="nav-modal-stats-summary-stat-total-games" class="nav-modal-stats-summary-stat"></span>
+                    <span class="nav-modal-stats-summary-stat-title">Games Played</span>
+                </div>
+                <div class="nav-modal-stats-summary-container">
+                    <span id="nav-modal-stats-summary-stat-win-percent" class="nav-modal-stats-summary-stat"></span>
+                    <span class="nav-modal-stats-summary-stat-title">Win %</span>
+                </div>
+                <div class="nav-modal-stats-summary-container">
+                    <span id="nav-modal-stats-summary-stat-current-streak" class="nav-modal-stats-summary-stat"></span>
+                    <span class="nav-modal-stats-summary-stat-title">Current Streak</span>
+                </div>
+                <div class="nav-modal-stats-summary-container">
+                    <span id="nav-modal-stats-summary-stat-longest-streak" class="nav-modal-stats-summary-stat"></span>
+                    <span class="nav-modal-stats-summary-stat-title">Longest Streak</span>
+                </div>
+            </div>
+            <span class="nav-modal-title nav-modal-distribution-title">GUESS DISTRIBUTION</span>
+            <div class="nav-modal-distribution-container">
+                <div class="nav-modal-distribution-graph-container">
+                    <div class="nav-modal-distribution-graph-guess">1</div>
+                    <div id="nav-modal-distribution-graph-one-guess" class="nav-modal-distribution-bar"></div>
+                </div>
+                <div class="nav-modal-distribution-graph-container nav-modal-distribution-graph-not-first">
+                    <div class="nav-modal-distribution-graph-guess">2</div>
+                    <div id="nav-modal-distribution-graph-two-guess" class="nav-modal-distribution-bar">0</div>
+                </div>
+                <div class="nav-modal-distribution-graph-container nav-modal-distribution-graph-not-first">
+                    <div class="nav-modal-distribution-graph-guess">3</div>
+                    <div id="nav-modal-distribution-graph-three-guess" class="nav-modal-distribution-bar">0</div>
+                </div>
+                <div class="nav-modal-distribution-graph-container nav-modal-distribution-graph-not-first">
+                    <div class="nav-modal-distribution-graph-guess">4</div>
+                    <div id="nav-modal-distribution-graph-four-guess" class="nav-modal-distribution-bar">0</div>
+                </div>
+                <div class="nav-modal-distribution-graph-container nav-modal-distribution-graph-not-first">
+                    <div class="nav-modal-distribution-graph-guess">5</div>
+                    <div id="nav-modal-distribution-graph-five-guess" class="nav-modal-distribution-bar">0</div>
+                </div>
             </div>
         </div>
     </div>
@@ -334,6 +384,76 @@
         transform: rotate(-90deg);
     }
 
+    .nav-stats-active > i {
+        color: white;
+    }
+
+    .nav-modal-stats-summary {
+        width: 100%;
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .nav-modal-stats-summary-container {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        color: #F8F8F8;
+        width: 20%;
+    }
+
+    .nav-modal-stats-summary-stat {
+        font-family: JetBrains, serif;
+        font-size: 35px;
+    }
+
+    .nav-modal-stats-summary-stat-title {
+        font-family: JetBrains, serif;
+        font-size: 13px;
+    }
+
+    .nav-modal-distribution-title {
+        margin-top: 25px;
+        margin-bottom: 25px;
+    }
+
+    .nav-modal-distribution-container {
+        width: 85%;
+        margin: auto;
+    }
+
+
+    .nav-modal-distribution-graph-container {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .nav-modal-distribution-graph-guess, .nav-modal-distribution-bar {
+        color: white;
+        font-family: JetBrains, serif;
+        min-width: 12px;
+        height: 20px;
+        line-height: 20px;
+        justify-items: center;
+        align-items: center;
+    }
+
+    .nav-modal-distribution-graph-guess {
+        margin-right: 5px;
+    }
+
+    .nav-modal-distribution-bar {
+        background-color: #3A3A3C;
+        padding-right: 5px;
+        padding-left: 4px;
+        text-align: right;
+    }
+
+    .nav-modal-distribution-graph-not-first {
+        margin-top: 10px;
+    }
+
     .left-float {
         float: left;
     }
@@ -346,6 +466,7 @@
 
 <script src="https://kit.fontawesome.com/dba819a3b6.js" crossorigin="anonymous"></script>
 <script src="/resources/scripts/popup.js"></script>
+<script src="/resources/scripts/userstats.js"></script>
 <script>
     <?php require 'resources/scripts/cookie.js' ?>
     let hardModeToggle = document.getElementById("game-setting-hard-mode");
@@ -353,19 +474,54 @@
     let allow5DigitsToggle = document.getElementById("game-setting-allow-5-digits");
     let darkThemeToggle = document.getElementById("game-setting-dark-theme");
     let onScreenKeyboardOnlyToggle = document.getElementById("game-setting-allow-on-screen-keyboard-only");
+    let distributionGraphOneGuessBar = document.getElementById("nav-modal-distribution-graph-one-guess");
+    let distributionGraphTwoGuessBar = document.getElementById("nav-modal-distribution-graph-two-guess");
+    let distributionGraphThreeGuessBar = document.getElementById("nav-modal-distribution-graph-three-guess");
+    let distributionGraphFourGuessBar = document.getElementById("nav-modal-distribution-graph-four-guess");
+    let distributionGraphFiveGuessBar = document.getElementById("nav-modal-distribution-graph-five-guess");
     let userSettings;
 
-    triggerDisplayAndTrigger("nav-popup-settings-open", "nav-popup", "flex", true, "nav-settings-cog-active", "nav-popup-settings-open");
-    triggerDisplayAndTrigger("nav-popup", "nav-popup", "none", false, "nav-settings-cog-active", "nav-popup-settings-open");
-    triggerDisplayAndTrigger("nav-modal-settings-close", "nav-popup", "none", true, "nav-settings-cog-active", "nav-popup-settings-open");
+    triggerDisplayAndTrigger("nav-popup-settings-open", "nav-settings-popup", "flex", true, "nav-settings-cog-active", "nav-popup-settings-open");
+    triggerDisplayAndTrigger("nav-settings-popup", "nav-settings-popup", "none", false, "nav-settings-cog-active", "nav-popup-settings-open");
+    triggerDisplayAndTrigger("nav-modal-settings-close", "nav-settings-popup", "none", true, "nav-settings-cog-active", "nav-popup-settings-open");
+    triggerDisplayAndTrigger("nav-popup-stats-open", "nav-stats-popup", "flex", true, "nav-stats-active", "nav-popup-stats-open");
+    triggerDisplayAndTrigger("nav-stats-popup", "nav-stats-popup", "none", false, "nav-stats-active", "nav-popup-stats-open");
+    triggerDisplayAndTrigger("nav-modal-stats-close", "nav-stats-popup", "none", true, "nav-stats-active", "nav-popup-stats-open");
     hardModeToggle.addEventListener('change', updateUserSettings);
     allowAlphasToggle.addEventListener('change', updateUserSettings);
     allow5DigitsToggle.addEventListener('change', updateUserSettings);
     darkThemeToggle.addEventListener('change', updateUserSettings);
     onScreenKeyboardOnlyToggle.addEventListener('change', updateUserSettings);
 
-
     getUserSettings();
+    getUserStats();
+
+    let winPercent = Math.round((userStats.gamesWon / userStats.gamesPlayed) * 100);
+    if (isNaN(winPercent)) {
+        winPercent = 0;
+    }
+
+    let distributionGuesses = [
+        (100 * (userStats.guessDistribution.oneGuess / userStats.gamesWon)),
+        (100 * (userStats.guessDistribution.twoGuesses / userStats.gamesWon)),
+        (100 * (userStats.guessDistribution.threeGuesses / userStats.gamesWon)),
+        (100 * (userStats.guessDistribution.fourGuesses / userStats.gamesWon)),
+        (100 * (userStats.guessDistribution.fiveGuesses / userStats.gamesWon))];
+
+    document.getElementById("nav-modal-stats-summary-stat-total-games").innerHTML = (userStats.gamesPlayed).toString();
+    document.getElementById("nav-modal-stats-summary-stat-win-percent").innerHTML = winPercent.toString();
+    document.getElementById("nav-modal-stats-summary-stat-current-streak").innerHTML = (userStats.winStreak).toString();
+    document.getElementById("nav-modal-stats-summary-stat-longest-streak").innerHTML = (userStats.longestStreak).toString();
+    distributionGraphOneGuessBar.innerHTML = userStats.guessDistribution.oneGuess;
+    distributionGraphOneGuessBar.style.width = distributionGuesses[0] + '%';
+    distributionGraphTwoGuessBar.innerHTML = userStats.guessDistribution.twoGuesses;
+    distributionGraphTwoGuessBar.style.width = distributionGuesses[1] + '%';
+    distributionGraphThreeGuessBar.innerHTML = userStats.guessDistribution.threeGuesses;
+    distributionGraphThreeGuessBar.style.width = distributionGuesses[2] + '%';
+    distributionGraphFourGuessBar.innerHTML = userStats.guessDistribution.fourGuesses;
+    distributionGraphFourGuessBar.style.width = distributionGuesses[3] + '%';
+    distributionGraphFiveGuessBar.innerHTML = userStats.guessDistribution.fiveGuesses;
+    distributionGraphFiveGuessBar.style.width = distributionGuesses[4] + '%';
 
     function getUserSettings() {
         if (!(checkCookie("userSettings"))) {
@@ -375,7 +531,7 @@
                 allow5Digits: false,
                 darkTheme: true,
                 onScreenKeyboardOnly: false
-            })
+            });
             setCookie("userSettings", defaultSettings, 365);
             userSettings = JSON.parse(defaultSettings);
         } else {
@@ -399,7 +555,6 @@
     }
 
     function updateUserSettings(event) {
-        console.log("updating")
         if (event.target === hardModeToggle) {
             userSettings.hardMode = !!event.target.checked;
         }
@@ -415,7 +570,6 @@
         if (event.target === onScreenKeyboardOnlyToggle) {
             userSettings.onScreenKeyboardOnly = !!event.target.checked;
         }
-        console.log(userSettings);
         setCookie("userSettings", JSON.stringify(userSettings), 365);
     }
 

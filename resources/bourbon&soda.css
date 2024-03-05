@@ -1,6 +1,28 @@
 :root {
-    --background-color: rgb(12, 12, 13);
-    --color-tone-border: rgb(58, 58, 60);
+    --background-color: var(--background-color-dark);
+    --background-color-dark: rgb(12, 12, 13);
+    --background-color-light: rgb(244,244,245);
+    --color-tone-border: var(--color-tone-border-dark);
+    --color-tone-border-dark: #3A3A3C;
+    --color-tone-border-light: rgb(12, 12, 13);
+    --main-text-color-tone: var(--main-text-color-tone-dark);
+    --main-text-color-tone-dark: #F8F8F8;
+    --main-text-color-tone-light: #000000;
+    --sub-text-color-tone: var(--sub-text-color-tone-dark);
+    --sub-text-color-tone-dark: #DFDFDF;
+    --sub-text-color-tone-light: #363636;
+    --supp-text-color-tone: var(--supp-text-color-tone-dark);
+    --supp-text-color-tone-dark: #DFDFDF;
+    --supp-text-color-tone-light: #202020;
+    --setting-slider-background: var(--setting-slider-background-dark);
+    --setting-slider-background-dark: #767676;
+    --setting-slider-background-light: #878A8C;
+    --nav-modal-icons: var(--nav-modal-icons-dark);
+    --nav-modal-icons-dark: gray;
+    --nav-modal-icons-light: gray;
+    --nav-modal-hover-icons: var(--nav-modal-icons-dark);
+    --nav-modal-hover-icons-dark: white;
+    --nav-modal-hover-icons-light: black;
     --popup-width: 510px;
     --popup-background: rgba(0, 0, 0, 0.75);
 }

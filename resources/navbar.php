@@ -163,14 +163,14 @@
         height: var(--navbar-height);
         width: 100%;
         background-color: var(--background-color);
-        border-bottom: var(--navbar-border-width) solid gray;
+        border-bottom: var(--navbar-border-width) solid var(--color-tone-border);
         display: flex;
         justify-content: space-around;
         align-items: center;
     }
 
     nav :where(logo) {
-        color: white;
+        color: var(--main-text-color-tone);
         font-family: JetBrains, serif;
         font-size: 38px;
         letter-spacing: 3px;
@@ -189,13 +189,13 @@
     }
 
     nav :where(ul) li i {
-        color: gray;
+        color: var(--nav-modal-icons);
         font-size: 22px;
         transition: cubic-bezier(0.4, 0, 0.6, 1) .25s;
     }
 
     nav :where(ul) li:hover > i {
-        color: white;
+        color: var(--nav-modal-hover-icons);
     }
 
     nav :where(ul) li:hover .settings-cog {
@@ -242,7 +242,7 @@
         font-family: JetBrains, serif;
         text-transform: uppercase;
         font-size: 15px;
-        color: white;
+        color: var(--main-text-color-tone);
         margin: auto;
     }
 
@@ -250,7 +250,7 @@
         font-family: JetBrains, serif;
         text-transform: uppercase;
         font-size: 25px;
-        color: gray;
+        color: var(--nav-modal-icons);
         text-align: right;
         margin-left: -15px;
         padding: 10px;
@@ -259,7 +259,7 @@
     }
 
     .nav-modal-close:hover {
-        color: white;
+        color: var(--nav-modal-hover-icons);
     }
 
     .nav-popup-modal-top-spacer {
@@ -286,14 +286,14 @@
         font-family: JetBrains, serif;
         font-weight: 900;
         font-size: 17px;
-        color: #F8F8F8;
+        color: var(--main-text-color-tone)
     }
 
     .nav-modal-setting-description {
         font-family: JetBrains, serif;
         font-weight: 700;
         font-size: calc(0.618 * 17px);
-        color: #DFDFDF;
+        color: var(--sub-text-color-tone);
     }
 
     .nav-modal-copyright {
@@ -304,14 +304,14 @@
         font-size: 12px;
         font-family: "Clear Sans", serif;
         font-weight: 500;
-        color: #DFDFDF;
+        color: var(--supp-text-color-tone);
     }
 
     .nav-modal-switch-container {
-        display: flex; /* Ensure it's a flex container */
-        justify-content: center; /* Center horizontally */
-        align-items: center; /* Center vertically */
-        height: 100%; /* Ensure the container takes full height */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
     }
 
     .nav-modal-switch {
@@ -333,7 +333,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: #767676;
+        background-color: var(--setting-slider-background);
         -webkit-transition: .4s;
         transition: .4s;
     }
@@ -380,12 +380,12 @@
     }
 
     .nav-settings-cog-active > i {
-        color: white;
+        color: var(--nav-modal-hover-icons);
         transform: rotate(-90deg);
     }
 
     .nav-stats-active > i {
-        color: white;
+        color: var(--nav-modal-hover-icons);
     }
 
     .nav-modal-stats-summary {
@@ -399,7 +399,7 @@
         display: flex;
         flex-direction: column;
         text-align: center;
-        color: #F8F8F8;
+        color: var(--main-text-color-tone);
         width: 20%;
     }
 
@@ -421,6 +421,7 @@
     .nav-modal-distribution-container {
         width: 85%;
         margin: auto;
+        margin-bottom: 10px;
     }
 
 
@@ -432,7 +433,8 @@
     .nav-modal-distribution-graph-guess, .nav-modal-distribution-bar {
         color: white;
         font-family: JetBrains, serif;
-        min-width: 12px;
+        font-size: 14px;
+        min-width: 10px;
         height: 20px;
         line-height: 20px;
         justify-items: center;
@@ -441,17 +443,18 @@
 
     .nav-modal-distribution-graph-guess {
         margin-right: 5px;
+        color: var(--main-text-color-tone);
     }
 
     .nav-modal-distribution-bar {
-        background-color: #3A3A3C;
+        background-color: var(--color-tone-border);
         padding-right: 5px;
         padding-left: 4px;
         text-align: right;
     }
 
     .nav-modal-distribution-graph-not-first {
-        margin-top: 10px;
+        margin-top: 8px;
     }
 
     .left-float {
@@ -479,6 +482,7 @@
     let distributionGraphThreeGuessBar = document.getElementById("nav-modal-distribution-graph-three-guess");
     let distributionGraphFourGuessBar = document.getElementById("nav-modal-distribution-graph-four-guess");
     let distributionGraphFiveGuessBar = document.getElementById("nav-modal-distribution-graph-five-guess");
+    let cssRoot = document.querySelector(':root');
     let userSettings;
 
     triggerDisplayAndTrigger("nav-popup-settings-open", "nav-settings-popup", "flex", true, "nav-settings-cog-active", "nav-popup-settings-open");
@@ -538,6 +542,8 @@
             userSettings = JSON.parse(getCookie("userSettings"));
         }
 
+        setDisplayMode();
+
         // Hard Mode Setting
         hardModeToggle.checked = userSettings.hardMode === true;
 
@@ -566,11 +572,34 @@
         }
         if (event.target === darkThemeToggle) {
             userSettings.darkTheme = !!event.target.checked;
+            setDisplayMode();
         }
         if (event.target === onScreenKeyboardOnlyToggle) {
             userSettings.onScreenKeyboardOnly = !!event.target.checked;
         }
         setCookie("userSettings", JSON.stringify(userSettings), 365);
+    }
+
+    function setDisplayMode() {
+        if (userSettings.darkTheme === true) {
+            cssRoot.style.setProperty('--background-color', 'var(--background-color-dark)');
+            cssRoot.style.setProperty('--color-tone-border', 'var(--color-tone-border-dark)');
+            cssRoot.style.setProperty('--main-text-color-tone', 'var(--main-text-color-tone-dark)');
+            cssRoot.style.setProperty('--sub-text-color-tone', 'var(--sub-text-color-tone-dark)');
+            cssRoot.style.setProperty('--setting-slider-background', 'var(--setting-slider-background-dark)');
+            cssRoot.style.setProperty('--nav-modal-icons', 'var(--nav-modal-icons-dark)');
+            cssRoot.style.setProperty('--nav-modal-hover-icons', 'var(--nav-modal-hover-icons-dark)');
+            cssRoot.style.setProperty('--supp-text-color-tone', 'var(--supp-text-color-tone-dark)');
+        } else {
+            cssRoot.style.setProperty('--background-color', 'var(--background-color-light)');
+            cssRoot.style.setProperty('--color-tone-border', 'var(--color-tone-border-light)');
+            cssRoot.style.setProperty('--main-text-color-tone', 'var(--main-text-color-tone-light)');
+            cssRoot.style.setProperty('--sub-text-color-tone', 'var(--sub-text-color-tone-light)');
+            cssRoot.style.setProperty('--setting-slider-background', 'var(--setting-slider-background-light)');
+            cssRoot.style.setProperty('--nav-modal-icons', 'var(--nav-modal-icons-light)');
+            cssRoot.style.setProperty('--nav-modal-hover-icons', 'var(--nav-modal-hover-icons-light)');
+            cssRoot.style.setProperty('--supp-text-color-tone', 'var(--supp-text-color-tone-light)');
+        }
     }
 
 </script>

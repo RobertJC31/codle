@@ -11,6 +11,7 @@
         body {
             display: flex;
             flex-direction: column;
+            align-items: center;
             min-height: 100vh; 
         }
         .board {
@@ -61,6 +62,7 @@
         <button class="peg">9</button>
     </div>
     </div>
+
     </body>
 </html>
 

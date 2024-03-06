@@ -49,16 +49,16 @@
         </div>
         <div class="board-container">
         <div class="board">
-        <div class="peg">0</div>
-    <div class="peg">1</div>
-    <div class="peg">2</div>
-    <div class="peg">3</div>
-    <div class="peg">4</div>
-    <div class="peg">5</div>
-    <div class="peg">6</div>
-    <div class="peg">7</div>
-    <div class="peg">8</div>
-    <div class="peg">9</div>
+        <button class="peg">0</button>
+        <button class="peg">1</button>
+        <button class="peg">2</button>
+        <button class="peg">3</button>
+        <button class="peg">4</button>
+        <button class="peg">5</button>
+        <button class="peg">6</button>
+        <button class="peg">7</button>
+        <button class="peg">8</button>
+        <button class="peg">9</button>
     </div>
     </div>
     </body>
